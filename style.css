@@ -1,0 +1,23 @@
+
+
+
+.folder, .file {
+    margin-left: 20px;
+}
+
+.folder::before, .file::before {
+    content: '';
+    display: inline-block;
+    width: 85px;
+    height: 82px;
+    margin-right: 5px;
+    background-size: cover;
+}
+
+.folder::before {
+    background-image: url('IMG/Treee.jpg');
+}
+
+.file::before {
+    background-image: url('IMG/Treee2.png');
+}
