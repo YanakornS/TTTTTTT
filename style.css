@@ -1,8 +1,6 @@
-
-
-
 .folder, .file {
     margin-left: 20px;
+    cursor: pointer; /* ทำให้เมาส์เปลี่ยนรูปแบบเป็น pointer เมื่อ hover */
 }
 
 .folder::before, .file::before {
@@ -12,12 +10,66 @@
     height: 82px;
     margin-right: 5px;
     background-size: cover;
+    
 }
 
 .folder::before {
-    background-image: url('IMG/Treee.jpg');
+    background-image: url('IMG/folder.png');
+    border: 2px solid #4CAF50; /* เพิ่มเส้นขอบเพื่อแสดงการเลือก, สามารถปรับเปลี่ยนสีได้ตามต้องการ */
+    background-color: #f0f0f0; /* สามารถเพิ่ม background-color เพื่อเพิ่มความเด่นชัดเมื่อ item ถูกเลือก */
 }
 
 .file::before {
-    background-image: url('IMG/Treee2.png');
+    background-image: url('IMG/file.png');
+    border: 2px solid #4CAF50; /* เพิ่มเส้นขอบเพื่อแสดงการเลือก, สามารถปรับเปลี่ยนสีได้ตามต้องการ */
+    background-color: #f0f0f0; /* สามารถเพิ่ม background-color เพื่อเพิ่มความเด่นชัดเมื่อ item ถูกเลือก */
+}
+
+/* เลือกปุ่ม Delete ด้วยชื่อ class */
+button.delete-button {
+  /* เพิ่มสไตล์เริ่มต้น */
+  background-color: #ff6347; /* สีเข้มของปุ่ม */
+  color: #fff; /* สีของข้อความ */
+  border: none; /* ไม่มีเส้นขอบ */
+  padding: 5px 10px; /* ขนาดของพื้นที่ภายในปุ่ม */
+  border-radius: 5px; /* มนเรียบเมื่อมีการเลื่อน */
+  cursor: pointer; /* เป็นตัวชี้ */
+}
+
+/* เพิ่มสไตล์เมื่อเม้าส์ไปวาง */
+button.delete-button:hover {
+  background-color: #d32f2f; /* เปลี่ยนสีเมื่อเม้าส์ไปวาง */
+}
+
+/* เลือกปุ่ม Add ด้วยชื่อ class */
+button.add-button {
+  /* เพิ่มสไตล์เริ่มต้น */
+  background-color: #4caf50; /* สีเขียวของปุ่ม */
+  color: #fff; /* สีของข้อความ */
+  border: none; /* ไม่มีเส้นขอบ */
+  padding: 5px 10px; /* ขนาดของพื้นที่ภายในปุ่ม */
+  border-radius: 5px; /* มนเรียบเมื่อมีการเลื่อน */
+  cursor: pointer; /* เป็นตัวชี้ */
+}
+
+/* เพิ่มสไตล์เมื่อเม้าส์ไปวาง */
+button.add-button:hover {
+  background-color: #45a049; /* เปลี่ยนสีเมื่อเม้าส์ไปวาง */
+}
+
+
+/* เลือกปุ่ม Rename ด้วยชื่อ class */
+button.rename-button {
+  /* เพิ่มสไตล์เริ่มต้น */
+  background-color: #ffc107; /* สีเหลืองของปุ่ม */
+  color: #000; /* สีของข้อความ */
+  border: none; /* ไม่มีเส้นขอบ */
+  padding: 5px 10px; /* ขนาดของพื้นที่ภายในปุ่ม */
+  border-radius: 5px; /* มนเรียบเมื่อมีการเลื่อน */
+  cursor: pointer; /* เป็นตัวชี้ */
+}
+
+/* เพิ่มสไตล์เมื่อเม้าส์ไปวาง */
+button.rename-button:hover {
+  background-color: #e0a800; /* เปลี่ยนสีเมื่อเม้าส์ไปวาง */
 }

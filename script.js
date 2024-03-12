@@ -26,11 +26,10 @@ function addFolder(parentItem, parentPath) {
     name: folderName,
     type: "folder",
     children: [],
-  };
+  };  
   parentItem.children.push(newFolder);
   refreshTree();
 }
-
 function addFile(parentItem, parentPath) {
   const fileName = prompt("Enter new file name:");
   if (!fileName) return;
@@ -39,10 +38,17 @@ function addFile(parentItem, parentPath) {
     name: fileName,
     type: "file",
   };
-  parentItem.children.push(newFile);
+
+  // Check if children exist before pushing
+  if (parentItem.children) {
+    parentItem.children.push(newFile);
+  } else {
+    // Initialize children as an empty array if it doesn't exist
+    parentItem.children = [];
+    parentItem.children.push(newFile);
+  }
   refreshTree();
 }
-
 function removeFolder(item, path) {
   if (!confirm(`Are you sure you want to delete ${item.name}?`)) return;
 
@@ -86,7 +92,8 @@ function createTreeElement(item, parentPath = "") {
   const currentPath = `${parentPath}/${item.name}`;
 
   const addButton = document.createElement("button");
-  addButton.textContent = "+";
+  addButton.textContent = "Add";
+  addButton.classList.add("add-button"); // เพิ่ม class "add-button"
   addButton.onclick = function () {
     addFolderOrFile(item, currentPath);
   };
@@ -95,7 +102,8 @@ function createTreeElement(item, parentPath = "") {
   item.element = element;
 
   const removeButton = document.createElement("button");
-  removeButton.textContent = "-";
+  removeButton.textContent = "Delete";
+  removeButton.classList.add("delete-button"); // เพิ่ม class "delete-button"
   removeButton.onclick = function () {
     if (item.type === "folder") {
       removeFolder(item, currentPath);
@@ -107,6 +115,7 @@ function createTreeElement(item, parentPath = "") {
 
   const renameButton = document.createElement("button");
   renameButton.textContent = "Rename";
+  renameButton.classList.add("rename-button"); // เพิ่ม class "rename-button"
   renameButton.onclick = function () {
     if (item.type === "folder") {
       renameFolder(item, currentPath);
@@ -136,9 +145,7 @@ function addFolderOrFile(parentItem, parentPath) {
   } else {
     alert("Invalid choice. Please enter 'folder' or 'file'.");
   }
-  parentItem.element.appendChild(addButton);
 }
-
 function removeFile(item, path) {
   if (!confirm(`Are you sure you want to delete ${item.name}?`)) return;
 
@@ -158,7 +165,6 @@ function removeFile(item, path) {
   }
   refreshTree();
 }
-
 function renameFile(item, path) {
   const newName = prompt("Enter new name:");
   if (!newName) return;
@@ -168,3 +174,4 @@ function renameFile(item, path) {
 }
 
 refreshTree();
+
